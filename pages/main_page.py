@@ -8,6 +8,8 @@ class MainPage(Page):
 
     SEARCH_BOX = (By.ID, "woocommerce-product-search-field-0")
     SEARCH_ICON = (By.CSS_SELECTOR, "a i.icon-search")
+    ACCOUNT_ICON = (By.CSS_SELECTOR, "a.nav-top-link[data-open *= 'login']")
+    LOGIN_MFP = (By.XPATH, "//h3[text() = 'Login']")
 
     def _cat_css_selector(self, cat_label):
         return (By.CSS_SELECTOR, f"img[alt = '{cat_label}']")
@@ -34,4 +36,9 @@ class MainPage(Page):
         actions.perform()
         super().wait_until_appearance(self.SEARCH_BOX).send_keys(item_title, Keys.RETURN)
 
+    def click_on_account(self):
+        super().find_element(self.ACCOUNT_ICON).click()
+
+    def wait_until_appearance_login(self):
+        super().wait_until_appearance(self.LOGIN_MFP)
 
