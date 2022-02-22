@@ -59,3 +59,14 @@ class Page:
 
     def wait_until_clickable(self, locator):
         return self.wait.until(EC.element_to_be_clickable(locator))
+
+    def mouse_on(self, locator):
+        action = ActionChains(self.driver)
+        action.move_to_element(self.find_element(locator))
+        action.perform()
+
+    def mouse_on_click(self, locator):
+        action = ActionChains(self.driver)
+        action.move_to_element(self.find_element(locator))
+        action.click(self.find_element(locator))
+        action.perform()

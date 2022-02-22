@@ -2,6 +2,7 @@
 from pages.cart_page import CartPage
 from pages.category_page import CatPage
 from pages.main_page import MainPage
+from pages.nav_bar import NavBarPage
 from pages.nav_page import NavPage
 from pages.product_page import ProductPage
 
@@ -14,6 +15,7 @@ class Application:
         self.category_page = CatPage(self.driver)
         self.nav_page = NavPage(self.driver)
         self.product_page = ProductPage(self.driver)
+        self.nav_bar_page = NavBarPage(self.driver)
 
 
 
