@@ -10,6 +10,8 @@ class MainPage(Page):
     SEARCH_ICON = (By.CSS_SELECTOR, "a i.icon-search")
     ACCOUNT_ICON = (By.CSS_SELECTOR, "a.nav-top-link[data-open *= 'login']")
     LOGIN_MFP = (By.XPATH, "//h3[text() = 'Login']")
+    CART_ICON = (By.CSS_SELECTOR, ".cart-icon strong")
+    EMPTY_CART_ICON_TEXT = (By.XPATH, "//li/div/p[text() = 'No products in the cart.']")
 
     def _cat_css_selector(self, cat_label):
         return (By.CSS_SELECTOR, f"img[alt = '{cat_label}']")
@@ -41,4 +43,13 @@ class MainPage(Page):
 
     def wait_until_appearance_login(self):
         super().wait_until_appearance(self.LOGIN_MFP)
+
+    def click_on_cart(self):
+        super().find_element(self.CART_ICON).click()
+
+    def mouse_on_cart_icon(self):
+        super().mouse_on(self.CART_ICON)
+
+    def presence_of_empty_cart_text(self):
+        super().wait_until_appearance(self.EMPTY_CART_ICON_TEXT)
 
